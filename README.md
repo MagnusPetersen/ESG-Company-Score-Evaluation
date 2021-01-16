@@ -12,7 +12,9 @@ Sentence-BERT, is a modification of the pretrained BERT network that use siamese
 
 # Code Explanaition
 
+The initial part of the code is for hyperparameter tuning. In this case the parameters are the cutoff values for the composite scores, E, S and G, for an Article to be counted as being about either E, S and/or G. For exmplae "Evil Inc seen harming baby pandas" might get a sum of all environment keywords ("environment", "pollution", "climate change", "nature") of 0.9 which would lead to a classfication as environment, if the cuttoff is below 0.9. The confidence_finder function is then used to pick cutt_offs and evaluate a few article and see if the cutt_off is aporpriate. 
 
+After choosing an appropriate cutt_off for all three categories scalers will be calculated to scale the three individual scores to a normal distribution. This is done by sampling a number of articles at random and calculating ESG scores to find a mean and stadard deviaten in order to find a tranformation to standardize the data. Lastly the ESG Scores will be calcuated for the given number of companies.
 
 # Functions
 
