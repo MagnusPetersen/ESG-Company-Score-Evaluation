@@ -2,6 +2,8 @@
 
 This is my attempt of estimating ESG scores, a scoring system for evaluating environment, social and governance impact of an entity. The scoring is done using a zero shot multi label categorization using a pretrained S-BERT Model. The model uses keywords corresponding to E, S and G in order to categorize articles as belonging to the three categories. If the article is classified as belonging to one or more of the categories it is assigned a score based on the relative positivity of the article, which is in turn calculated by comparing the score of the label "negative" and "positive". All scores are standardized based on randomly sampled articles.
 
+![alt text](./example.png)
+
 # Disclaimer
 
 This is a personal project that I undertook because I had access to a large dataset of news articles about various companies. The data is private, however since my score evaluation program only uses a pretrained model and is therefore applicable for similar data and has not been trained on private data it is usable by anyone who want to use it. Feel free to use it as you please, but you will have to use your own data.
