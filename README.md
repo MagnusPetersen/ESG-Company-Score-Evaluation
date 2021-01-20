@@ -8,28 +8,29 @@ This is a personal project that i undertook because i had access to a large data
 
 # Theory
 
-Sentence-BERT, is a modification of the pretrained BERT network that use siamese and triplet network structures to derive semantically meaningful sentence embeddings that can be compared using cosine-similarity [1]. However since S-BERT has been trained on Sequences is does porely when embedding words, making comparisons between lables and texts suboptimal. The workaround is to embedd the test using S-BERT and to ebedd the word using word2vec and mapping the word2vec vector to the S-BERT embedding using a trained transformation matrix. For more details you can check out this blog post [2].
+Sentence-BERT, is a modification of the pretrained BERT network that use Siamese and triplet network structures to derive semantically meaningful sentence embeddings that can be compared using cosine-similarity [1]. However, since S-BERT has been trained on Sequences is does poorly when embedding words, making comparisons between labels and texts suboptimal. The workaround is to embed the test using S-BERT and to embed the word using word2vec and mapping the word2vec vector to the S-BERT embedding using a trained transformation matrix. For more details you can check out this blog post [2].
 
-# Code Explanaition
+# Code Explanation
 
-The initial part of the code is for hyperparameter tuning. In this case the parameters are the cutoff values for the composite scores, E, S and G, for an Article to be counted as being about either E, S and/or G. For exmplae "Evil Inc seen harming baby pandas" might get a sum of all environment keywords ("environment", "pollution", "climate change", "nature") of 0.9 which would lead to a classfication as environment, if the cuttoff is below 0.9. The confidence_finder function is then used to pick cutt_offs and evaluate a few article and see if the cutt_off is aporpriate. 
+The initial part of the code is for hyperparameter tuning. In this case the parameters are the cut-off values for the composite scores, E, S and G, for an Article to be counted as being about either E, S and/or G. For example, "Evil Inc seen harming baby pandas" might get a sum of all environment keywords ("environment", "pollution", "climate change", "nature") of 0.9 which would lead to a classification as environment, if the cut-off is below 0.9. The confidence finder function is then used to pick cut-offs and evaluate a few articles and see if the cut-off is appropriate. 
 
-After choosing an appropriate cutt_off for all three categories scalers will be calculated to scale the three individual scores to a normal distribution. This is done by sampling a number of articles at random and calculating ESG scores to find a mean and stadard deviaten in order to find a tranformation to standardize the data. Lastly the ESG Scores will be calcuated for the given number of companies.
+After choosing an appropriate cut-off for all three categories scalers will be calculated to scale the three individual scores to a normal distribution. This is done by sampling several articles at random and calculating ESG scores to find a mean and standard deviation in order to find a transformation to standardize the data. Lastly the ESG Scores will be calculated for the given number of companies.
 
 # Functions
 
-conficence_finder: This function outputs the estimated number of articles classified as "E", "S" or "G" aswell as outputting sample articles that were classified, as a file to evaluate the classification.
+confidence_finder: This function outputs the estimated number of articles classified as "E", "S" or "G" as well as outputting sample articles that were classified, as a file to evaluate the classification.
 
-norm: This function collects the distribution of the esg score in order to standradize them.
+norm: This function collects the distribution of the esg score in order to standardize them.
 
-esg_calculator: Calculates the ESG Scores of a number of companies over time or cumulative.
+esg_calculator: Calculates the ESG Scores of several companies over time or cumulative.
 
-esg_plot: This function plots the ESG Data for timeseries data
+esg_plot: This function plots the ESG Data for timeseries data.
 
-esg_gauss_plot: This function plots the cumulative ESg scores.
+esg_gauss_plot: This function plots the cumulative ESG scores.
 
 # Sources
 
 [1] Nils Reimers, Iryna Gurevych. Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks.
 
 [2] Zero-Shot Learning in Modern NLP https://joeddav.github.io/blog/2020/05/29/ZSL.html
+
